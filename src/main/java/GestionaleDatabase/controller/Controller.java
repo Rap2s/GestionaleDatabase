@@ -1,14 +1,12 @@
 package GestionaleDatabase.controller;
 
 import GestionaleDatabase.entity.AdministratorEntity;
+import GestionaleDatabase.entity.SignInDTO;
 import GestionaleDatabase.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -30,9 +28,9 @@ public class Controller {
 
     @PostMapping("/registrazione")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<AdministratorEntity> registrazione(@RequestParam String nome, @RequestParam String cognome, @RequestParam(required = false) String email, @RequestParam(required = false) String cellulare) {
+    public ResponseEntity<AdministratorEntity> registrazione(@RequestBody SignInDTO signInDTO) {
         AdministratorEntity admin = new AdministratorEntity();
-        admin = administratorService.registrazione(nome, cognome, email, cellulare);
+        admin = administratorService.registrazione(signInDTO.getNome(), signInDTO.getCognome(), signInDTO.getEmail(), signInDTO.getCellulare());
 
         if (admin == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
