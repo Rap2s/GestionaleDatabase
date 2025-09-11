@@ -31,7 +31,7 @@ public class SignInDTO {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = (email == null || email.isBlank()) ? null : email;
     }
 
     public String getCellulare() {
@@ -39,7 +39,7 @@ public class SignInDTO {
     }
 
     public void setCellulare(String cellulare) {
-        this.cellulare = cellulare;
+        this.cellulare = (cellulare == null || cellulare.isBlank()) ? null : cellulare;
     }
 
     public SignInDTO(String nome, String cognome, String email, String cellulare) {
