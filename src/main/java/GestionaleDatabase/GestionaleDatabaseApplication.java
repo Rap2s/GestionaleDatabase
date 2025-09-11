@@ -9,5 +9,4 @@ public class GestionaleDatabaseApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionaleDatabaseApplication.class, args);
 	}
-
 }
